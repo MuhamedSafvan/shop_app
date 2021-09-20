@@ -28,9 +28,6 @@ class _FrontPageState extends State<FrontPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(new MaterialPageRoute(
-                        //   builder: (context) => ProductList(),
-                        // ));
                       },
                       child: Text(
                         "VIEW ALL",

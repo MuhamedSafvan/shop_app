@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:shop_app/controllers/productPageJson.dart';
 import 'package:shop_app/pages/cartPage.dart';
+import 'package:shop_app/pages/productDesc.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -184,25 +186,22 @@ class _ProductPageState extends State<ProductPage> {
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: 25,
+                        width: 60,
                       ),
                       Image.network(productColor),
                     ],
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
+                  margin: EdgeInsets.only(left: 10, right: 10, top: 15),
                   height: 290,
-                  // color: Colors.grey,
                   child: GridView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: productSpecs.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3),
                       itemBuilder: (context, index) {
-                        // return Text('$productSpecs');
                         return Container(
-                          // color: Colors.yellow,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -211,7 +210,8 @@ class _ProductPageState extends State<ProductPage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    ('${productSpecs[index]['title']}'.toUpperCase()),
+                                    ('${productSpecs[index]['title']}'
+                                        .toUpperCase()),
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
@@ -226,26 +226,12 @@ class _ProductPageState extends State<ProductPage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-
                                   Text(
                                     productSpecs[index]['value'],
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
-
-                                  // Text(newList[index]['name'],
-                                  //     style: TextStyle(
-                                  //         fontSize: 16,
-                                  //         fontWeight: FontWeight.normal,
-                                  //         color: Colors.grey[600])),
-                                  // Text(
-                                  //   'OMR ${newList[index]['price']}',
-                                  //   style: TextStyle(
-                                  //       fontSize: 20,
-                                  //       fontWeight: FontWeight.bold,
-                                  //       color: Colors.red[800]),
-                                  // ),
                                 ],
                               )
                             ],
@@ -253,17 +239,10 @@ class _ProductPageState extends State<ProductPage> {
                         );
                       }),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Divider(
-                  thickness: 10,
-                  color: Colors.grey[350],
-                ),
+                lineDivider(),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                  height: 150,
-                  color: Colors.grey,
+                  height: 100,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -278,9 +257,13 @@ class _ProductPageState extends State<ProductPage> {
                       Container(
                         margin: EdgeInsets.only(left: 150),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ProductDesk(),
+                            ));
+                          },
                           child: Text(
-                            'View details...',
+                            'See more..',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.normal,
@@ -291,6 +274,10 @@ class _ProductPageState extends State<ProductPage> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                lineDivider(),
                 Container(
                   color: Colors.orange,
                   margin: EdgeInsets.all(10),
@@ -321,4 +308,11 @@ class _ProductPageState extends State<ProductPage> {
       ),
     );
   }
+}
+
+Widget lineDivider() {
+  return Divider(
+    thickness: 10,
+    color: Colors.grey[350],
+  );
 }
