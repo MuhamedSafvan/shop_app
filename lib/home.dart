@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_language_fonts/google_language_fonts.dart';
+// import 'package:google_language_fonts/google_language_fonts.dart';
 import './pages/frontPage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 4,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: Size.fromHeight(120),
           child: AppBar(
             title: Container(
               // height: 50,
@@ -28,20 +28,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.network(
-                    logo,
-                    height: 45,
-                    color: Colors.white,
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    width: 40,
+                    child: Image.network(
+                      logo,
+                      height: 50,
+                      color: Colors.white,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.values[0],
-                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'عمان فون',
-                        style: ArabicFonts.changa(
-                            fontWeight: FontWeight.w800, fontSize: 25),
-                        // style: TextStyle(fontWeight: FontWeight.bold,wordSpacing: 1, ),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Changa',
+                          fontSize: 25,
+                        ),
                       ),
                       Text(
                         'OMAN PHONE',

@@ -58,8 +58,11 @@ class _ProductPageState extends State<ProductPage> {
           if (snapshot.hasData) {
             List list = [snapshot.data];
             List listImage = list[0]['image'];
-            // List listName = list[0]['name'];
-            // Map<String, dynamic> map = snapshot.data as Map<String, dynamic>;
+            String productName = list[0]['name'];
+            double productPrice = list[0]['price'];
+            int productSpPrice = list[0]['special_price'];
+            String productColor = list[0]['attrs']['color'];
+            List productSpecs = list[0]['attrs']['specs'];
             return ListView(
               children: [
                 Container(
@@ -104,25 +107,151 @@ class _ProductPageState extends State<ProductPage> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 50,
-                  color: Colors.yellowAccent,
-                  // child: Image.network('$newList[attrs][]'),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
                   height: 100,
-                  color: Colors.greenAccent,
-                  // child: Text('${list[0]['name']}'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        productName,
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 5, right: 5),
+                        height: 25,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.yellow[700],
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 18,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              '3.4',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'OMR ${productSpPrice.toStringAsFixed(2)}',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.red[600],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            'OMR ${productPrice.toStringAsFixed(2)}',
+                            style: TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                fontSize: 24,
+                                color: Colors.black26,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                  padding: EdgeInsets.only(left: 20),
                   height: 50,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[100],
+                  child: Row(
+                    children: [
+                      Text(
+                        'Color',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black45,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Image.network(productColor),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  height: 120,
-                  color: Colors.grey,
+                  height: 290,
+                  // color: Colors.grey,
+                  child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: productSpecs.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3),
+                      itemBuilder: (context, index) {
+                        // return Text('$productSpecs');
+                        return Container(
+                          // color: Colors.yellow,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    ('${productSpecs[index]['title']}'.toUpperCase()),
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Image.network(
+                                    productSpecs[index]['icon'],
+                                    height: 60,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+
+                                  Text(
+                                    productSpecs[index]['value'],
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+
+                                  // Text(newList[index]['name'],
+                                  //     style: TextStyle(
+                                  //         fontSize: 16,
+                                  //         fontWeight: FontWeight.normal,
+                                  //         color: Colors.grey[600])),
+                                  // Text(
+                                  //   'OMR ${newList[index]['price']}',
+                                  //   style: TextStyle(
+                                  //       fontSize: 20,
+                                  //       fontWeight: FontWeight.bold,
+                                  //       color: Colors.red[800]),
+                                  // ),
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      }),
                 ),
                 SizedBox(
                   height: 20,
