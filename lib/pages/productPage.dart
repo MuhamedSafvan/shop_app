@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:shop_app/controllers/productPageJson.dart';
 import 'package:shop_app/pages/cartPage.dart';
 import 'package:shop_app/pages/productDesc.dart';
+import 'package:shop_app/widgets/similarProducts.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -66,6 +66,7 @@ class _ProductPageState extends State<ProductPage> {
             String productColor = list[0]['attrs']['color'];
             List productSpecs = list[0]['attrs']['specs'];
             return ListView(
+              shrinkWrap: true,
               children: [
                 Container(
                   margin: EdgeInsets.all(10),
@@ -74,9 +75,7 @@ class _ProductPageState extends State<ProductPage> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(left: 50),
-                        // color: Colors.brown,
                         width: 300,
-                        // child: Text('$newList'),
                         child: CarouselSlider.builder(
                           itemCount: listImage.length,
                           itemBuilder: (context, index, hero) {
@@ -101,6 +100,7 @@ class _ProductPageState extends State<ProductPage> {
                           icon: Icon(
                             Icons.favorite_outline,
                             size: 35,
+                            color: Colors.black26,
                           ),
                         ),
                       ),
@@ -192,53 +192,53 @@ class _ProductPageState extends State<ProductPage> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 15),
-                  height: 290,
-                  child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: productSpecs.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    ('${productSpecs[index]['title']}'
-                                        .toUpperCase()),
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Image.network(
-                                    productSpecs[index]['icon'],
-                                    height: 60,
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    productSpecs[index]['value'],
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      }),
+                SizedBox(
+                  height: 10,
                 ),
+                GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: productSpecs.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  ('${productSpecs[index]['title']}'
+                                      .toUpperCase()),
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Image.network(
+                                  productSpecs[index]['icon'],
+                                  height: 60,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  productSpecs[index]['value'],
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    }),
+                
                 lineDivider(),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -248,11 +248,11 @@ class _ProductPageState extends State<ProductPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          margin: EdgeInsets.only(top: 10, left: 20),
+                          margin: EdgeInsets.only(top: 10, left: 5),
                           child: Text(
                             'About Product',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           )),
                       Container(
                         margin: EdgeInsets.only(left: 150),
@@ -278,26 +278,22 @@ class _ProductPageState extends State<ProductPage> {
                   height: 10,
                 ),
                 lineDivider(),
-                Container(
-                  color: Colors.orange,
-                  margin: EdgeInsets.all(10),
-                  height: MediaQuery.of(context).size.height + 10,
-                  child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      controller: ScrollController(keepScrollOffset: false),
-                      itemCount: 15,
-                      padding: EdgeInsets.all(10),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5),
-                      itemBuilder: (ctx, index) {
-                        return Container(
-                            color: Colors.purple, child: Text('Done'));
-                      }),
+                SizedBox(
+                  height: 30,
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text('Similar Products',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                SimilarProducts(),
+                SizedBox(
+                  height: 60,
+                )
               ],
-              controller: ScrollController(keepScrollOffset: false),
             );
           } else {
             return Center(

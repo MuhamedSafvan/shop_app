@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:google_language_fonts/google_language_fonts.dart';
-import './pages/frontPage.dart';
+import 'pages/homePage.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -19,10 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
           preferredSize: Size.fromHeight(120),
           child: AppBar(
             title: Container(
-              // height: 50,
               margin: EdgeInsets.symmetric(vertical: 100),
-              // color: Colors.purple,
-              // height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
