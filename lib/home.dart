@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/pages/cartPage.dart';
+import 'package:shop_app/pages/categoryPage.dart';
+import 'package:shop_app/pages/productPage.dart';
+import 'package:shop_app/pages/searchPage.dart';
+// import 'package:google_language_fonts/google_language_fonts.dart';
 import 'pages/homePage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -69,8 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
             bottom: SearchBar(),
           ),
         ),
-        bottomNavigationBar: NavigationMenu(),
-        // bottomNavigationBar: menu(),
+        bottomNavigationBar: menu(context),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
@@ -96,119 +99,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class NavigationMenu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: TabBar(
-        labelColor: Colors.red,
-        unselectedLabelColor: Colors.black54,
-        indicatorSize: TabBarIndicatorSize.tab,
-        // indicatorPadding: EdgeInsets.all(5.0),
-        indicatorColor: Colors.blue,
-        tabs: [
-          InkWell(
-            onTap: () {
-              // Navigator.of(context).push(
-              //   new MaterialPageRoute(
-              //     builder: (context) => FrontPage(),
-              //   ),
-              // );
-              // print('Home');
-            },
-            child: Tab(
-              text: "Home",
-              icon: Icon(Icons.home),
-            ),
+Widget menu(BuildContext context) {
+  return TabBar(
+    onTap: (index) {
+      if (index == 0) {
+        print('Home');
+      }
+      if (index == 1) {
+        Navigator.of(context).push(
+          new MaterialPageRoute(
+            builder: (context) => SearchPage(),
           ),
-          InkWell(
-            onTap: () {
-              print('Search');
-            },
-            child: Tab(
-              text: "Search",
-              icon: Icon(Icons.search),
-            ),
+        );
+      }
+      if (index == 2) {
+        Navigator.of(context).push(
+          new MaterialPageRoute(
+            builder: (context) => CategoryPage(),
           ),
-          InkWell(
-            onTap: () {
-              print('Categories');
-            },
-            child: Tab(
-              text: "Categories",
-              icon: Icon(Icons.apps),
-            ),
+        );
+      }
+      if (index == 3) {
+        Navigator.of(context).push(
+          new MaterialPageRoute(
+            builder: (context) => CartPage(),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                new MaterialPageRoute(
-                  builder: (context) => CartPage(),
-                ),
-              );
-              // print('Cart');
-            },
-            child: Tab(
-              text: "Cart",
-              icon: Icon(Icons.shopping_cart_outlined),
-            ),
-          ),
-        ],
+        );
+      }
+    },
+    labelColor: Colors.red,
+    unselectedLabelColor: Colors.black54,
+    indicatorSize: TabBarIndicatorSize.tab,
+    indicatorPadding: EdgeInsets.all(5.0),
+    indicatorColor: Colors.blue,
+    tabs: [
+      Tab(
+        text: "Home",
+        icon: Icon(Icons.home),
       ),
-    );
-  }
+      Tab(
+        text: "Search",
+        icon: Icon(Icons.search),
+      ),
+      Tab(
+        text: "Categories",
+        icon: Icon(Icons.apps),
+      ),
+      Tab(
+        text: "Cart",
+        icon: Icon(Icons.shopping_cart_outlined),
+      ),
+    ],
+  );
 }
-
-// Widget menu() {
-//   return Container(
-//     child: TabBar(
-//       labelColor: Colors.red,
-//       unselectedLabelColor: Colors.black54,
-//       indicatorSize: TabBarIndicatorSize.tab,
-//       indicatorPadding: EdgeInsets.all(5.0),
-//       indicatorColor: Colors.blue,
-//       tabs: [
-//         InkWell(
-//           onTap: () {
-//             // print('Home');
-
-//           },
-//           child: Tab(
-//             text: "Home",
-//             icon: Icon(Icons.home),
-//           ),
-//         ),
-//         InkWell(
-//           onTap: () {
-//             print('Search');
-//           },
-//           child: Tab(
-//             text: "Search",
-//             icon: Icon(Icons.search),
-//           ),
-//         ),
-//         InkWell(
-//           onTap: () {
-//             print('Categories');
-//           },
-//           child: Tab(
-//             text: "Categories",
-//             icon: Icon(Icons.apps),
-//           ),
-//         ),
-//         InkWell(
-//           onTap: () {
-//             print('Cart');
-//           },
-//           child: Tab(
-//             text: "Cart",
-//             icon: Icon(Icons.shopping_cart_outlined),
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
 
 class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   const SearchBar({Key? key}) : super(key: key);
@@ -245,3 +188,23 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(100);
 }
+
+// void tabManager(BuildContext context) {
+//   if (index == 0) {
+//     Navigator.of(context).push(
+//       new MaterialPageRoute(
+//         builder: (context) => CartPage(),
+//       ),
+//     );
+//   }if (index == 1) {
+//     print('Search BAr');
+//   }if (index == 2) {
+//     print('category bar');
+//   }if (index == 3) {
+//     Navigator.of(context).push(
+//       new MaterialPageRoute(
+//         builder: (context) => CartPage(),
+//       ),
+//     );
+//   }
+// }

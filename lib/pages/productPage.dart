@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import '../controllers/productPageJson.dart';
 import './cartPage.dart';
@@ -94,14 +95,11 @@ class _ProductPageState extends State<ProductPage> {
                       Container(
                         margin: EdgeInsets.only(bottom: 300, left: 20),
                         width: 50,
-                        child: IconButton(
-                          alignment: Alignment.center,
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite_outline,
-                            size: 35,
-                            color: Colors.black26,
-                          ),
+                        child: FavoriteButton(
+                          isFavorite: false,
+                          valueChanged: (_isFavorite) {
+                            print('Is Starred : $_isFavorite');
+                          },
                         ),
                       ),
                     ],
@@ -238,7 +236,6 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                       );
                     }),
-                
                 lineDivider(),
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -296,8 +293,22 @@ class _ProductPageState extends State<ProductPage> {
               ],
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
+            return GridView(
+              shrinkWrap: true,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              children: [
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ],
             );
           }
         },
