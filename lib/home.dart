@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:google_language_fonts/google_language_fonts.dart';
+import 'package:shop_app/pages/cartPage.dart';
 import 'pages/homePage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -69,7 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
             bottom: SearchBar(),
           ),
         ),
-        bottomNavigationBar: menu(),
+        bottomNavigationBar: NavigationMenu(),
+        // bottomNavigationBar: menu(),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
@@ -95,35 +96,119 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-Widget menu() {
-  return Container(
-    child: TabBar(
-      labelColor: Colors.red,
-      unselectedLabelColor: Colors.black54,
-      indicatorSize: TabBarIndicatorSize.tab,
-      indicatorPadding: EdgeInsets.all(5.0),
-      indicatorColor: Colors.blue,
-      tabs: [
-        Tab(
-          text: "Home",
-          icon: Icon(Icons.home),
-        ),
-        Tab(
-          text: "Search",
-          icon: Icon(Icons.search),
-        ),
-        Tab(
-          text: "Categories",
-          icon: Icon(Icons.apps),
-        ),
-        Tab(
-          text: "Cart",
-          icon: Icon(Icons.shopping_cart_outlined),
-        ),
-      ],
-    ),
-  );
+class NavigationMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TabBar(
+        labelColor: Colors.red,
+        unselectedLabelColor: Colors.black54,
+        indicatorSize: TabBarIndicatorSize.tab,
+        // indicatorPadding: EdgeInsets.all(5.0),
+        indicatorColor: Colors.blue,
+        tabs: [
+          InkWell(
+            onTap: () {
+              // Navigator.of(context).push(
+              //   new MaterialPageRoute(
+              //     builder: (context) => FrontPage(),
+              //   ),
+              // );
+              // print('Home');
+            },
+            child: Tab(
+              text: "Home",
+              icon: Icon(Icons.home),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              print('Search');
+            },
+            child: Tab(
+              text: "Search",
+              icon: Icon(Icons.search),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              print('Categories');
+            },
+            child: Tab(
+              text: "Categories",
+              icon: Icon(Icons.apps),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                new MaterialPageRoute(
+                  builder: (context) => CartPage(),
+                ),
+              );
+              // print('Cart');
+            },
+            child: Tab(
+              text: "Cart",
+              icon: Icon(Icons.shopping_cart_outlined),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+// Widget menu() {
+//   return Container(
+//     child: TabBar(
+//       labelColor: Colors.red,
+//       unselectedLabelColor: Colors.black54,
+//       indicatorSize: TabBarIndicatorSize.tab,
+//       indicatorPadding: EdgeInsets.all(5.0),
+//       indicatorColor: Colors.blue,
+//       tabs: [
+//         InkWell(
+//           onTap: () {
+//             // print('Home');
+
+//           },
+//           child: Tab(
+//             text: "Home",
+//             icon: Icon(Icons.home),
+//           ),
+//         ),
+//         InkWell(
+//           onTap: () {
+//             print('Search');
+//           },
+//           child: Tab(
+//             text: "Search",
+//             icon: Icon(Icons.search),
+//           ),
+//         ),
+//         InkWell(
+//           onTap: () {
+//             print('Categories');
+//           },
+//           child: Tab(
+//             text: "Categories",
+//             icon: Icon(Icons.apps),
+//           ),
+//         ),
+//         InkWell(
+//           onTap: () {
+//             print('Cart');
+//           },
+//           child: Tab(
+//             text: "Cart",
+//             icon: Icon(Icons.shopping_cart_outlined),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
 class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   const SearchBar({Key? key}) : super(key: key);

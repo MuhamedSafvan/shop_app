@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/widgets/banner.dart';
-import 'package:shop_app/widgets/featuredItems.dart';
-import 'package:shop_app/widgets/mobilePhones.dart';
-import 'package:shop_app/widgets/newArrivals.dart';
-import 'package:shop_app/widgets/offers.dart';
-import 'package:shop_app/widgets/slider.dart';
-import 'package:shop_app/widgets/testProducts.dart';
-import 'package:shop_app/widgets/titleBar.dart';
+import '../widgets/banner.dart';
+import '../widgets/featuredItems.dart';
+import '../widgets/mobilePhones.dart';
+import '../widgets/newArrivals.dart';
+import '../widgets/offers.dart';
+import '../widgets/testProducts.dart';
+import '../widgets/titleBar.dart';
+import '../widgets/slider.dart';
 
 class FrontPage extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView(
+      child: ListView(shrinkWrap: true,
         children: [
           HomeSlider(),
           TitleBars(buttonAction: () {}, index: 0),

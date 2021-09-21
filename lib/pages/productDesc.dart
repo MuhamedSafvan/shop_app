@@ -14,7 +14,7 @@ class ProductDesk extends StatelessWidget {
           builder: (ctx, snapshot) {
             if (snapshot.hasData) {
               List list = [snapshot.data];
-              List productSpecs = list[0]['attrs']['specs'];
+              // List productSpecs = list[0]['attrs']['specs'];
 
               return Container(
                 margin: EdgeInsets.only(top: 10, left: 10),

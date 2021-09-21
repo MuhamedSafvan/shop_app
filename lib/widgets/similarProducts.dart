@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/controllers/imageLinks.dart';
-import 'package:shop_app/controllers/similarJson.dart';
+import 'package:shop_app/controllers/testFile.dart';
+import '../controllers/similarJson.dart';
 
 class SimilarProducts extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/controllers/homePageJson.dart';
+import '../controllers/homePageJson.dart';
 
 class CustomBanner extends StatefulWidget {
   @override
@@ -19,8 +19,22 @@ class _CustomBannerState extends State<CustomBanner> {
               child: Image.network(image),
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
+            return GridView(
+              shrinkWrap: true,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              children: [
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ],
             );
           }
         });

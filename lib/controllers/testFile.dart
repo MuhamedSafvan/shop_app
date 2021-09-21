@@ -1,8 +1,7 @@
-import 'dart:convert';
+// Working Links instead Non Working Image Links
 
-import 'package:http/http.dart';
 
-List testList = [
+List listHomePage = [
   {
     "type": "productlist",
     "data": {
@@ -13,7 +12,7 @@ List testList = [
           "name": "MOTOROLA G10 Power (Aurora Grey, 64 GB)  (4 GB RAM)",
           "id": "6",
           "sku": "MOTOROLA G10 Power",
-          "image": "\/m\/o\/motog9.jpeg",
+          "image": "https://m.media-amazon.com/images/I/31yW27dKYtL.jpg",
           "price": 10,
           "storage": "128 GB",
           "product_tag": null,
@@ -24,7 +23,7 @@ List testList = [
           "id": "5",
           "sku": "OMPH001",
           "image":
-              "\/a\/p\/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrzxg3nggd.jpeg",
+              "https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg",
           "price": 100.11,
           "special_price": 90,
           "rating": "3.4",
@@ -36,7 +35,8 @@ List testList = [
           "name": "OPPO RENO 10x Zoom",
           "id": "300",
           "sku": "OPPORENO10XZOOM",
-          "image": "\/o\/p\/oppo_reno_10x_zoom.jpg",
+          "image":
+              "https://m.media-amazon.com/images/I/81u4Eg0czZL._SX679_.jpg",
           "price": 265,
           "storage": "256 GB",
           "product_tag": null,
@@ -46,7 +46,8 @@ List testList = [
           "name": "HONOR 7C 32GB",
           "id": "316",
           "sku": "HNR7C32GB",
-          "image": "\/h\/o\/honor_7c_32gb.jpg",
+          "image":
+              "https://rukminim1.flixcart.com/image/416/416/jh6l2fk0/mobile/g/c/m/honor-7c-lnd-al30-v100r001-original-imaf595gqdzqerdf.jpeg?q=70",
           "price": 50,
           "storage": "32 GB",
           "product_tag": null,
@@ -66,7 +67,7 @@ List testList = [
           "name": "MOTOROLA G10 Power (Aurora Grey, 64 GB)  (4 GB RAM)",
           "id": "6",
           "sku": "MOTOROLA G10 Power",
-          "image": "\/m\/o\/motog9.jpeg",
+          "image": "https://m.media-amazon.com/images/I/31yW27dKYtL.jpg",
           "price": 10,
           "storage": "128 GB",
           "product_tag": null,
@@ -77,7 +78,7 @@ List testList = [
           "id": "5",
           "sku": "OMPH001",
           "image":
-              "\/a\/p\/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrzxg3nggd.jpeg",
+              "https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg",
           "price": 100.11,
           "special_price": 90,
           "rating": "3.4",
@@ -89,7 +90,8 @@ List testList = [
           "name": "OPPO RENO 10x Zoom",
           "id": "300",
           "sku": "OPPORENO10XZOOM",
-          "image": "\/o\/p\/oppo_reno_10x_zoom.jpg",
+          "image":
+              "https://m.media-amazon.com/images/I/81u4Eg0czZL._SX679_.jpg",
           "price": 265,
           "storage": "256 GB",
           "product_tag": null,
@@ -99,7 +101,8 @@ List testList = [
           "name": "HONOR 7C 32GB",
           "id": "316",
           "sku": "HNR7C32GB",
-          "image": "\/h\/o\/honor_7c_32gb.jpg",
+          "image":
+              "https://rukminim1.flixcart.com/image/416/416/jh6l2fk0/mobile/g/c/m/honor-7c-lnd-al30-v100r001-original-imaf595gqdzqerdf.jpeg?q=70",
           "price": 50,
           "storage": "32 GB",
           "product_tag": null,
@@ -119,7 +122,7 @@ List testList = [
           "name": "MOTOROLA G10 Power (Aurora Grey, 64 GB)  (4 GB RAM)",
           "id": "6",
           "sku": "MOTOROLA G10 Power",
-          "image": "\/m\/o\/motog9.jpeg",
+          "image": "https://m.media-amazon.com/images/I/31yW27dKYtL.jpg",
           "price": 10,
           "storage": "128 GB",
           "product_tag": null,
@@ -130,7 +133,7 @@ List testList = [
           "id": "5",
           "sku": "OMPH001",
           "image":
-              "\/a\/p\/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrzxg3nggd.jpeg",
+              "https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg",
           "price": 100.11,
           "special_price": 90,
           "rating": "3.4",
@@ -142,7 +145,8 @@ List testList = [
           "name": "Apple Leather Case for iPhone 11 Pro",
           "id": "163",
           "sku": "iphone11pro leather case",
-          "image": "\/a\/p\/apple_leather_case_for_iphone_11_pro.jpg",
+          "image":
+              "https://m.media-amazon.com/images/I/81pNi1ZV74L._SY450_.jpg",
           "price": 27.9,
           "storage": false,
           "product_tag": null,
@@ -153,7 +157,7 @@ List testList = [
           "id": "7",
           "sku": "Infinix Zero 8i",
           "image":
-              "\/i\/n\/infinix-zero-8i-x687b-original-imafxvbaprng39yw.jpeg",
+              "https://rukminim1.flixcart.com/image/416/416/khz693k0/mobile/h/z/n/infinix-zero-8i-x687b-original-imafxvbaprng39yw.jpeg?q=70",
           "price": 16,
           "storage": false,
           "product_tag": null,
@@ -182,7 +186,7 @@ List testList = [
           "name": "MOTOROLA G10 Power (Aurora Grey, 64 GB)  (4 GB RAM)",
           "id": "6",
           "sku": "MOTOROLA G10 Power",
-          "image": "\/m\/o\/motog9.jpeg",
+          "image": "https://m.media-amazon.com/images/I/31yW27dKYtL.jpg",
           "price": 10,
           "storage": "128 GB",
           "product_tag": null,
@@ -193,7 +197,7 @@ List testList = [
           "id": "5",
           "sku": "OMPH001",
           "image":
-              "\/a\/p\/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrzxg3nggd.jpeg",
+              "https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg",
           "price": 100.11,
           "special_price": 90,
           "rating": "3.4",
@@ -205,7 +209,8 @@ List testList = [
           "name": "MI Earbuds True Wireless",
           "id": "366",
           "sku": "MIEARBUDSTW",
-          "image": "\/m\/i\/mi_earbuds_true_wireless.jpg",
+          "image":
+              "https://m.media-amazon.com/images/I/71Dq7E1teUL._SY450_.jpg",
           "price": 15.9,
           "storage": false,
           "product_tag": null,
@@ -215,7 +220,8 @@ List testList = [
           "name": "MI Smart Band 5",
           "id": "367",
           "sku": "MISMRTBND5",
-          "image": "\/m\/i\/mi_smart_band_5.jpg",
+          "image":
+              "https://m.media-amazon.com/images/I/719ZywAmvOL._SL1500_.jpg",
           "price": 15.9,
           "storage": "512 Kb",
           "product_tag": null,
@@ -236,7 +242,7 @@ List testList = [
           "id": "5",
           "sku": "OMPH001",
           "image":
-              "\/a\/p\/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrzxg3nggd.jpeg",
+              "https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg",
           "price": 100.11,
           "special_price": 90,
           "rating": "3.4",
@@ -248,4 +254,8 @@ List testList = [
     },
     "subtype": "sales_product"
   }
+];
+List similarImageLinks = [
+  'https://m.media-amazon.com/images/I/31yW27dKYtL.jpg',
+  'https://rukminim1.flixcart.com/image/416/416/khz693k0/mobile/2/7/n/infinix-zero-8i-x687b-original-imafxvbajz9zkq8z.jpeg?q=70',
 ];

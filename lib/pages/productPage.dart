@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/controllers/productPageJson.dart';
-import 'package:shop_app/pages/cartPage.dart';
-import 'package:shop_app/pages/productDesc.dart';
-import 'package:shop_app/widgets/similarProducts.dart';
+import '../controllers/productPageJson.dart';
+import './cartPage.dart';
+import './productDesc.dart';
+import '../widgets/similarProducts.dart';
 
 class ProductPage extends StatefulWidget {
   @override

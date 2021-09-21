@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:shop_app/controllers/configJson.dart';
+import '../controllers/configJson.dart';
 
 class HomeSlider extends StatefulWidget {
   @override
@@ -30,8 +30,22 @@ class _HomeSliderState extends State<HomeSlider> {
                   aspectRatio: 16 / 9),
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
+            return GridView(
+              shrinkWrap: true,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              children: [
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ],
             );
           }
         });
