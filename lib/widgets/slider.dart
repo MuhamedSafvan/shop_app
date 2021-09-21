@@ -8,10 +8,12 @@ class HomeSlider extends StatefulWidget {
 }
 
 class _HomeSliderState extends State<HomeSlider> {
+  final _readConfigJson = readConfigJson();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: readConfigJson(),
+        future: _readConfigJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             Map<String, dynamic> map = snapshot.data as Map<String, dynamic>;

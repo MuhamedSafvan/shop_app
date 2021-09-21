@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/widgets/cartList.dart';
 import '../controllers/productPageJson.dart';
 import './cartPage.dart';
 import './productDesc.dart';
@@ -12,6 +13,8 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+  final _readProductJson = readProductJson();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +48,7 @@ class _ProductPageState extends State<ProductPage> {
         padding: EdgeInsets.only(),
         child: FloatingActionButton(
           shape: RoundedRectangleBorder(),
-          onPressed: () {
-            print('FAB');
-          },
+          onPressed: () => addToCart(),
           child: Text(
             'ADD TO CART',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -56,7 +57,7 @@ class _ProductPageState extends State<ProductPage> {
         ),
       ),
       body: FutureBuilder(
-        future: readProductJson(),
+        future: _readProductJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List list = [snapshot.data];
@@ -323,3 +324,66 @@ Widget lineDivider() {
     color: Colors.grey[350],
   );
 }
+
+// class AddToCart extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => FutureBuilder(
+//         future: readProductJson(),
+//         builder: (context, snapshot) {
+//           if (snapshot.hasData) {
+//             print('huhi');
+//             List listCart = [snapshot.data];
+//             String name = listCart[0]['name'];
+//             double price = listCart[0]['special_price'];
+//             String image = listCart[0]['image'][0];
+//             print(name);
+//             print(price);
+//             print(image);
+//             return addCart(name: name, price: price, image: 'OMR $image');
+//           } else {
+//             print('sdfr');
+//             return SizedBox();
+//           }
+//         },
+//       );
+// }
+
+Widget addToCart() {
+  print('Yesss');
+  return FutureBuilder(
+    future: readProductJson(),
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
+      print('moonji');
+      if (snapshot.hasData) {
+        print('huhi');
+        List listCart = [snapshot.data];
+        String name = listCart[0]['name'];
+        double price = listCart[0]['special_price'];
+        String image = listCart[0]['image'][0];
+        print(name);
+        print(price);
+        print(image);
+        return addCart(name: name, price: price, image: 'OMR $image');
+      } else {
+        print('sdfr');
+        return SizedBox();
+      }
+    },
+  );
+}
+
+addCart({required String name, required double price, required String image}) {
+  cartList.add({
+    'name': name,
+    'price': price,
+    'image': image,
+  });
+}
+
+// bistander(){
+//   cartList.add({
+//     "name": "Apple Iphone 12 Pro",
+//     "price": 10000,
+//     'image': 'https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg',
+//   });
+// }

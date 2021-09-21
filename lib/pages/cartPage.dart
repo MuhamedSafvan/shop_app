@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/widgets/checkOut.dart';
 
 import '../widgets/cartProducts.dart';
 
@@ -13,9 +14,8 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left: 130),
+          padding: EdgeInsets.only(left: 130),
           child: cartValue(),
-          // child: Text('My Cart'),
         ),
       ),
       body: CartProducts(),
@@ -23,4 +23,3 @@ class _CartPageState extends State<CartPage> {
     );
   }
 }
-

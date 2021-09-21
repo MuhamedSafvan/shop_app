@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/controllers/testFile.dart';
+import '../controllers/testFile.dart';
 import '../controllers/similarJson.dart';
 
 class SimilarProducts extends StatelessWidget {
+  final _readSimilarJson = readSimilarJson();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: readSimilarJson(),
+        future: _readSimilarJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             Map<String, dynamic> map = snapshot.data as Map<String, dynamic>;
@@ -27,50 +28,71 @@ class SimilarProducts extends StatelessWidget {
                     // color: Colors.indigo,
                     height: 70,
                     padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            height: 190,
-                            child: Image.network(similarImageLinks[index])),
-                        Container(
-                          // color: Colors.grey,
-                          child: Column(
-                            children: [
-                              Text(
-                                list[index]['name'],
-                                style: TextStyle(
+                    child: Stack(children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                              height: 190,
+                              child: Image.network(similarImageLinks[index])),
+                          Container(
+                            // color: Colors.grey,
+                            child: Column(
+                              children: [
+                                Text(
+                                  list[index]['name'],
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black54),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      currency,
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red[700]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      '${list[index]['price'].toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red[700]),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      list[index]['storage'] != false
+                          ? Align(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                ),
+                                color: Colors.brown,
+                                child: Text(
+                                  list[index]['storage'],
+                                  style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black54),
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    currency,
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.red[700]),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    '${list[index]['price'].toStringAsFixed(2)}',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.red[700]),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                            )
+                          : SizedBox(),
+                    ]),
                   );
                 });
             // );

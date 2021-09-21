@@ -7,12 +7,14 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  final _readConfigJson = readConfigJson();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder(
-        future: readConfigJson(),
+        future: _readConfigJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List list = [snapshot.data];

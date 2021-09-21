@@ -33,33 +33,54 @@ class _MobilePhonesState extends State<MobilePhones> {
               },
               child: Container(
                 padding: EdgeInsets.only(top: 10),
-                  height: 600,
-                  color: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Image.network(
-                            items[index]['image'],
-                            height: 150,
-                          ),
-                          Text(items[index]['name'],
+                height: 600,
+                color: Colors.white,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Image.network(
+                              items[index]['image'],
+                              height: 150,
+                            ),
+                            Text(items[index]['name'],
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.grey[600])),
+                            Text(
+                              'OMR ${items[index]['price'].toStringAsFixed(2)}',
                               style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey[600])),
-                          Text(
-                            'OMR ${items[index]['price'].toStringAsFixed(2)}',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red[800]),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red[800]),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    items[index]['storage'] != false ?Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        color: Colors.brown,
+                        child: Text(
+                          items[index]['storage'],
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                        ],
+                        ),
                       ),
-                    ],
-                  )),
+                    ): SizedBox(),
+                  ],
+                ),
+              ),
             );
           });
     } else {

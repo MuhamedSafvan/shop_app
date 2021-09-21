@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/controllers/testFile.dart';
+import '../controllers/testFile.dart';
 import '../pages/productPage.dart';
 
 class Offers extends StatefulWidget {
@@ -16,11 +16,6 @@ class _OffersState extends State<Offers> {
       return ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //   crossAxisSpacing: 10,
-          //   mainAxisSpacing: 10,
-          //   crossAxisCount: 2,
-          // ),
           itemCount: items.length,
           itemBuilder: (context, index) {
             return InkWell(
@@ -32,34 +27,56 @@ class _OffersState extends State<Offers> {
                 );
               },
               child: Container(
-                padding: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: 10),
                   height: 250,
                   color: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
+                  child: Stack(children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.network(
-                            items[index]['image'],
-                            height: 150,
-                          ),
-                          Text(items[index]['name'],
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.grey[600])),
-                          Text(
-                            'OMR ${items[index]['price'].toStringAsFixed(2)}',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red[800]),
+                          Column(
+                            children: [
+                              Image.network(
+                                items[index]['image'],
+                                height: 150,
+                              ),
+                              Text(items[index]['name'],
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.grey[600])),
+                              Text(
+                                'OMR ${items[index]['price'].toStringAsFixed(2)}',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red[800]),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  )),
+                    ),
+                    items[index]['storage'] != false
+                        ? Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              color: Colors.brown,
+                              child: Text(
+                                items[index]['storage'],
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
+                  ])),
             );
           });
     } else {

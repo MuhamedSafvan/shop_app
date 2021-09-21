@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/pages/cartPage.dart';
-import 'package:shop_app/pages/categoryPage.dart';
-import 'package:shop_app/pages/productPage.dart';
-import 'package:shop_app/pages/searchPage.dart';
-// import 'package:google_language_fonts/google_language_fonts.dart';
+import '../pages/cartPage.dart';
+import '../pages/categoryPage.dart';
+import '../pages/searchPage.dart';
 import 'pages/homePage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -189,22 +186,3 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
 }
 
-// void tabManager(BuildContext context) {
-//   if (index == 0) {
-//     Navigator.of(context).push(
-//       new MaterialPageRoute(
-//         builder: (context) => CartPage(),
-//       ),
-//     );
-//   }if (index == 1) {
-//     print('Search BAr');
-//   }if (index == 2) {
-//     print('category bar');
-//   }if (index == 3) {
-//     Navigator.of(context).push(
-//       new MaterialPageRoute(
-//         builder: (context) => CartPage(),
-//       ),
-//     );
-//   }
-// }

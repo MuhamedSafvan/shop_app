@@ -12,13 +12,14 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(),
       body: Container(
         child: Center(
-            child: Text(
-          'Search Page...',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w500,
+          child: Text(
+            'Search Page...',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

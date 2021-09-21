@@ -4,13 +4,14 @@ import 'package:flutter_html/style.dart';
 import '../controllers/productPageJson.dart';
 
 class ProductDesk extends StatelessWidget {
+  final _readProductJson = readProductJson();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
         body: FutureBuilder(
-          future: readProductJson(),
+          future: _readProductJson,
           builder: (ctx, snapshot) {
             if (snapshot.hasData) {
               List list = [snapshot.data];

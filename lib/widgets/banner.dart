@@ -7,10 +7,12 @@ class CustomBanner extends StatefulWidget {
 }
 
 class _CustomBannerState extends State<CustomBanner> {
+  final _readHomeJson = readHomeJson();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: readHomeJson(),
+        future: _readHomeJson,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List list = [snapshot.data];
