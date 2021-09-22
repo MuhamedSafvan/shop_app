@@ -17,7 +17,8 @@ class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView(shrinkWrap: true,
+      child: ListView(
+        shrinkWrap: true,
         children: [
           HomeSlider(),
           TitleBars(buttonAction: () {}, index: 0),
@@ -29,7 +30,7 @@ class _FrontPageState extends State<FrontPage> {
           CustomBanner(),
           TitleBars(buttonAction: () {}, index: 4),
           NewArrivals(),
-          TitleBars(buttonAction: (){}, index: 5),
+          TitleBars(buttonAction: () {}, index: 5),
           Offers(),
         ],
       ),

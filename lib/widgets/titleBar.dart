@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../controllers/testFile.dart';
+import '../controllers/productDetails.dart';
 
 class TitleBars extends StatefulWidget {
   final Function() buttonAction;
@@ -30,6 +30,7 @@ class _TitleBarsState extends State<TitleBars> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.red),
               onPressed: widget.buttonAction,
               child: Text(
                 'VIEW ALL',
@@ -58,6 +59,5 @@ class _TitleBarsState extends State<TitleBars> {
         ],
       );
     }
-    // });
   }
 }

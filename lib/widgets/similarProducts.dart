@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../controllers/testFile.dart';
+import '../controllers/productDetails.dart';
 import '../controllers/similarJson.dart';
 
 class SimilarProducts extends StatelessWidget {
@@ -25,7 +25,6 @@ class SimilarProducts extends StatelessWidget {
                     mainAxisSpacing: 10),
                 itemBuilder: (ctx, index) {
                   return Container(
-                    // color: Colors.indigo,
                     height: 70,
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Stack(children: [
@@ -36,7 +35,6 @@ class SimilarProducts extends StatelessWidget {
                               height: 190,
                               child: Image.network(similarImageLinks[index])),
                           Container(
-                            // color: Colors.grey,
                             child: Column(
                               children: [
                                 Text(
@@ -95,7 +93,6 @@ class SimilarProducts extends StatelessWidget {
                     ]),
                   );
                 });
-            // );
           } else {
             return Center(
               child: CircularProgressIndicator(),

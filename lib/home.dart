@@ -98,10 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget menu(BuildContext context) {
   return TabBar(
+    enableFeedback: true,
     onTap: (index) {
-      if (index == 0) {
-        print('Home');
-      }
+      if (index == 0) {}
       if (index == 1) {
         Navigator.of(context).push(
           new MaterialPageRoute(
@@ -185,4 +184,3 @@ class SearchBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(100);
 }
-

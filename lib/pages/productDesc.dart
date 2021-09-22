@@ -15,16 +15,22 @@ class ProductDesk extends StatelessWidget {
           builder: (ctx, snapshot) {
             if (snapshot.hasData) {
               List list = [snapshot.data];
-              // List productSpecs = list[0]['attrs']['specs'];
-
               return Container(
                 margin: EdgeInsets.only(top: 10, left: 10),
                 child: ListView(
                   children: [
-                    Text('Specifications: \n', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                    Html(data: list[0]['description'], style: {
-                      'body': Style(fontSize: FontSize(20), lineHeight: LineHeight(2)),
-                    },),
+                    Text(
+                      'Specifications: \n',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Html(
+                      data: list[0]['description'],
+                      style: {
+                        'body': Style(
+                            fontSize: FontSize(20), lineHeight: LineHeight(2)),
+                      },
+                    ),
                   ],
                 ),
               );

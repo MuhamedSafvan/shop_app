@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../controllers/testFile.dart';
+import '../controllers/productDetails.dart';
 import '../pages/productPage.dart';
 
 class Offers extends StatefulWidget {

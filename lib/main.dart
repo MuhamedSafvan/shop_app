@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import './home.dart';
 
 void main() {
-  
   runApp(MyApp());
 }
 
@@ -12,10 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Shop App',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+      title: 'OMAN PHONE',
+      theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       home: MyHomePage(),
     );
   }

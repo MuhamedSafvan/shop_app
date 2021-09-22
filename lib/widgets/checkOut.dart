@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/cartList.dart';
+import 'package:get/get.dart';
+import '../controllers/cartController.dart';
 
 class CheckOut extends StatefulWidget {
   @override
@@ -7,9 +8,11 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
+  final CartController getCartList = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
-    if (cartList.length != 0) {
+    if (getCartList.cartList.isNotEmpty && getCartList.cartList.length != 0) {
       return Container(
         padding: EdgeInsets.only(right: 10),
         width: MediaQuery.of(context).size.width,
@@ -19,16 +22,18 @@ class _CheckOutState extends State<CheckOut> {
             Expanded(
               child: Container(
                 margin: EdgeInsets.only(left: 10),
-                child: ListTile(
-                  title: Text(
-                    "Total",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
+                child: Obx(
+                  () => ListTile(
+                    title: Text(
+                      "Total",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    subtitle: getCartList.calSum(),
                   ),
-                  subtitle: calSum(),
                 ),
               ),
             ),
@@ -36,13 +41,22 @@ class _CheckOutState extends State<CheckOut> {
               child: Container(
                 height: 50,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.red),
                   onPressed: () {},
                   child: Text(
                     "CHECKOUT",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900),
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 3.0,
+                          color: Colors.black54,
+                          offset: Offset(2.0, 2.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -55,33 +69,12 @@ class _CheckOutState extends State<CheckOut> {
         child: Center(
           child: Text(
             'Your Cart Is Empty',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
         ),
       );
     }
   }
-}
-
-cartValue() {
-  int count = cartList.length;
-  return Text(
-    'My Cart ($count)',
-    style: TextStyle(fontWeight: FontWeight.bold),
-  );
-}
-
-calSum() {
-  double total = 0.00;
-  for (int i = 0; i < cartList.length; i++) {
-    total += cartList[i]['price'];
-  }
-  return Text(
-    'OMR ${total.toStringAsFixed(2)}',
-    style: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      color: Colors.black54,
-    ),
-  );
 }

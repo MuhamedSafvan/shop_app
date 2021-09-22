@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../controllers/testFile.dart';
+import '../controllers/productDetails.dart';
 import '../pages/productPage.dart';
 
 class MobilePhones extends StatefulWidget {
@@ -63,21 +63,23 @@ class _MobilePhonesState extends State<MobilePhones> {
                         ),
                       ],
                     ),
-                    items[index]['storage'] != false ?Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        color: Colors.brown,
-                        child: Text(
-                          items[index]['storage'],
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ): SizedBox(),
+                    items[index]['storage'] != false
+                        ? Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              color: Colors.brown,
+                              child: Text(
+                                items[index]['storage'],
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ),
