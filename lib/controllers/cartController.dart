@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get.dart';
 import '../controllers/getXController.dart';
 import '../pages/cartPage.dart';
-import '../pages/productPage.dart';
 
 class CartController extends GetxController {
   List cartList = [].obs;
