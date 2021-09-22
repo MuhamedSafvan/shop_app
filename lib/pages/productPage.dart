@@ -42,20 +42,8 @@ class _ProductPageState extends State<ProductPage> {
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.only(left: 30),
-        padding: EdgeInsets.only(),
-        child: FloatingActionButton(
-          shape: RoundedRectangleBorder(),
-          onPressed: () => addToCart(),
-          child: Text(
-            'ADD TO CART',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          elevation: 10,
-        ),
-      ),
+      floatingActionButton:
+          cartList.isEmpty ? addCartButton(context) : goToCartButton(context),
       body: FutureBuilder(
         future: _readProductJson,
         builder: (context, snapshot) {
@@ -325,65 +313,60 @@ Widget lineDivider() {
   );
 }
 
-// class AddToCart extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) => FutureBuilder(
-//         future: readProductJson(),
-//         builder: (context, snapshot) {
-//           if (snapshot.hasData) {
-//             print('huhi');
-//             List listCart = [snapshot.data];
-//             String name = listCart[0]['name'];
-//             double price = listCart[0]['special_price'];
-//             String image = listCart[0]['image'][0];
-//             print(name);
-//             print(price);
-//             print(image);
-//             return addCart(name: name, price: price, image: 'OMR $image');
-//           } else {
-//             print('sdfr');
-//             return SizedBox();
-//           }
-//         },
-//       );
-// }
+addCartButton(BuildContext context) {
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    margin: EdgeInsets.only(left: 30),
+    padding: EdgeInsets.only(),
+    child: FloatingActionButton(
+      shape: RoundedRectangleBorder(),
+      onPressed: () {
+        addToCart();
+        Navigator.of(context)
+            .push(new MaterialPageRoute(builder: (context) => ProductPage()))
+            .whenComplete(addToCart);
 
-Widget addToCart() {
-  print('Yesss');
-  return FutureBuilder(
-    future: readProductJson(),
-    builder: (BuildContext context, AsyncSnapshot snapshot) {
-      print('moonji');
-      if (snapshot.hasData) {
-        print('huhi');
-        List listCart = [snapshot.data];
-        String name = listCart[0]['name'];
-        double price = listCart[0]['special_price'];
-        String image = listCart[0]['image'][0];
-        print(name);
-        print(price);
-        print(image);
-        return addCart(name: name, price: price, image: 'OMR $image');
-      } else {
-        print('sdfr');
-        return SizedBox();
-      }
-    },
+        // Navigator.pushAndRemoveUntil(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => ProductPage()),
+        //   (Route<dynamic> route) => true,
+        // );
+        // Navigator.pop(context);
+      },
+      child: Text(
+        'ADD TO CART',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      ),
+      elevation: 10,
+    ),
   );
 }
 
-addCart({required String name, required double price, required String image}) {
-  cartList.add({
-    'name': name,
-    'price': price,
-    'image': image,
-  });
+goToCartButton(BuildContext context) {
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    margin: EdgeInsets.only(left: 30),
+    padding: EdgeInsets.only(),
+    child: FloatingActionButton(
+      shape: RoundedRectangleBorder(),
+      onPressed: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => CartPage(),
+        ),
+      ),
+      child: Text(
+        'GO TO CART',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      ),
+      elevation: 10,
+    ),
+  );
 }
 
-// bistander(){
-//   cartList.add({
-//     "name": "Apple Iphone 12 Pro",
-//     "price": 10000,
-//     'image': 'https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg',
-//   });
-// }
+addToCart() {
+  cartList.add({
+    "name": "APPLE iPhone 12 Pro (Pacific Blue, 128 GB",
+    "price": 90.00,
+    'image': 'https://m.media-amazon.com/images/I/71DVgBTdyLL._SX679_.jpg',
+  });
+}

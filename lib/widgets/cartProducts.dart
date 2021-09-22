@@ -53,15 +53,20 @@ class _CartProductsState extends State<CartProducts> {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  cartList.removeAt(index);
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CartPage()),
-                                    (Route<dynamic> route) => true,
-                                  );
-                                  setState(() {});
-                                  Navigator.pop(context);
+                                  itemRemove();
+                                  // cartList.removeAt(index);
+                                  Navigator.of(context)
+                                      .push(new MaterialPageRoute(
+                                          builder: (context) => CartPage()))
+                                      .whenComplete(itemRemove);
+                                  // Navigator.pushAndRemoveUntil(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //       builder: (context) => CartPage()),
+                                  //   (Route<dynamic> route) => true,
+                                  // );
+                                  // setState(() {});
+                                  // Navigator.pop(context);
                                 },
                                 icon: Icon(
                                   Icons.delete_forever_outlined,
@@ -137,4 +142,9 @@ class _CartProductsState extends State<CartProducts> {
       ),
     ]);
   }
+}
+
+itemRemove() {
+  var index;
+  cartList.removeAt(index);
 }
